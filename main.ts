@@ -14,12 +14,24 @@
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-import { cpSync, existsSync, mkdirSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
 
 const here = fileURLToPath(new URL('.', import.meta.url));
+// Leonida Ledger — my own check before the hand-in: the trophy file must name all 55 official
+// trophies and give each one a guide, or the build stops here instead of shipping a broken guide.
+// (The gate checks the same thing later; catching it here keeps a bad dossier out of /output.)
+const trophyDoc = JSON.parse(readFileSync(join(here, 'app', 'data', 'trophies.json'), 'utf-8'));
+const trophyNames = new Set((trophyDoc.trophies ?? []).map((t) => t.name));
+if (trophyDoc.trophies?.length !== 55 || trophyDoc.trophies.some((t) => typeof t.guide !== 'string' || !t.guide.trim())) {
+  throw new Error(`trophies.json must hold 55 trophies, each with a guide (found ${trophyDoc.trophies?.length ?? 0})`);
+}
+if (!trophyNames.has('Vice Got a Price!') || !trophyNames.has('T**s Ass Drug Money')) {
+  throw new Error('trophies.json is missing an official trophy name');
+}
+
 const out = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 mkdirSync(out, { recursive: true });

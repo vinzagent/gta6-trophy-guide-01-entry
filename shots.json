@@ -1,5 +1,1 @@
-[
-  { "file": "1-checklist.jpg", "path": "/", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "2-silver.jpg", "path": "/", "grade": "silver", "viewport": { "width": 1280, "height": 800 } },
-  { "file": "3-bronze.jpg", "path": "/", "grade": "bronze", "scroll": 1400, "viewport": { "width": 1280, "height": 800 } }
-]
+[{"file":"1-cover.jpg","note":"Cover: compact view with the Capital Offense guide and its sources open in the detail panel, progress 12/55 and filters visible.","url":"/?view=cover&trophy=45&earned=1,2,3,14,15,16,17,20,28,35,42,53&spoilers=off","viewport":{"height":800,"width":1280}},{"file":"2-roadmap.jpg","note":"Platinum roadmap: four stages with hour estimates and trophy counts per stage.","url":"/?view=roadmap","viewport":{"height":800,"width":1280}},{"file":"3-spoiler.jpg","note":"Spoiler setting on: the 12 story trophies shown as hidden placeholders, spoiler toggle visibly checked.","url":"/?filter=story&spoilers=on","viewport":{"height":800,"width":1280}},{"file":"4-filters.jpg","note":"Collectibles filter active with export/import buttons and progress visible.","url":"/?filter=collectible&earned=1,14,15,16,17,28,30,31,35,42&spoilers=off","viewport":{"height":800,"width":1280}}]
